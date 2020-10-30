@@ -1,0 +1,107 @@
+﻿Build1=Default,b4a.example
+File1=0.png
+File2=1.png
+File3=2.png
+File4=3.png
+File5=IRANSansDN.ttf
+File6=main.bal
+File7=Vazir.ttf
+FileGroup1=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+Group=Default Group
+IconFile=
+Library1=core
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~'www.AliKarbasi.ir~\n~'YouTube.com/AliKarbasi~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="26"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~'End of default text.~\n~'www.AliKarbasi.ir~\n~'YouTube.com/AliKarbasi
+Module1=Starter
+NumberOfFiles=7
+NumberOfLibraries=1
+NumberOfModules=1
+Version=9.01
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: YouTube.com/AliKarbasi
+	#VersionCode: 1
+	#VersionName: 1
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+
+End Sub
+
+Sub Globals
+
+	Private ListView1 As ListView
+	
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	
+	Activity.LoadLayout("main")
+	
+	For i=0 To 3
+		ListView1.AddTwoLinesAndBitmap("آیتم "& i,"متن فارسی",LoadBitmap(File.DirAssets,i&".png"))
+	Next
+	
+'	ListView1.AddSingleLine("item "& i)
+'	ListView1.AddTwoLines("item "& i,"Second line")
+
+	Dim myfont As Typeface
+	myfont = Typeface.LoadFromAssets("Vazir.ttf")
+	
+	Dim myfont2 As Typeface
+	myfont2 = Typeface.LoadFromAssets("IRANSansDN.ttf")
+
+	ListView1.TwoLinesAndBitmap.Label.TextColor = Colors.Red
+	ListView1.TwoLinesAndBitmap.SecondLabel.TextSize = "10"
+	
+	ListView1.TwoLinesAndBitmap.Label.Typeface = myfont2
+	ListView1.TwoLinesAndBitmap.SecondLabel.Typeface = myfont
+	
+	ListView1.TwoLinesAndBitmap.Label.Gravity = Gravity.CENTER
+	ListView1.TwoLinesAndBitmap.SecondLabel.Gravity = Gravity.CENTER
+	
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Sub ListView1_ItemClick (Position As Int, Value As Object)
+	
+	If Value = "item 1" Then
+		
+		ToastMessageShow("item 1 was clicked!",False)
+		
+	Else If Position = 1 Then
+		
+		ToastMessageShow("item 2 was clicked!",False)
+		
+	End If
+	
+End Sub
+
+'Sub ListView1_ItemLongClick (Position As Int, Value As Object)
+'	
+'	Msgbox("Position: "& Position &"Value: "& Value,"long click")
+'	
+'End Sub
+
+'www.AliKarbasi.ir
+'YouTube.com/AliKarbasi
+
